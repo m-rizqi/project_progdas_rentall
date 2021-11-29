@@ -1,7 +1,10 @@
 #include <iostream>
+using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
 	std::cout << "Hello world!" << std::endl;
 	std::cout << "nanta nih bossss!" << std::endl;
+	std::cout << "test" << std::endl;
+	cout << "Anjay" << endl;
 }
