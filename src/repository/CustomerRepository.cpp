@@ -17,6 +17,7 @@ vector<Customer> CustomerRepository::readCustomerFile(){
     ifstream infile;
     customerList.clear();
     infile.open("src//repository//customer.txt");
+    // infile.open("../src/repository/customer.txt");
     if (!infile.is_open())
     {
         printf("Sorry! File not found");
