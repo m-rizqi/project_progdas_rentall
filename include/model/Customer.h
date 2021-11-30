@@ -1,3 +1,5 @@
+#ifndef _CUSTOMER_H
+#define _CUSTOMER_H
 #include <iostream>
 using namespace std;
 
@@ -24,3 +26,5 @@ class Customer{
         void print();
         bool isEquals(Customer target);
 };
+
+#endif

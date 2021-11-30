@@ -10,5 +10,4 @@ class CustomerRepository{
     public:
         static CustomerRepository* getInstance();
         vector<Customer> readCustomerFile();
-        void test();
 };
