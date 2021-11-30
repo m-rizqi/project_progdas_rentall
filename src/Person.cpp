@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Person.h"
+#include "../include/Person.h"
 using namespace std;
 
 void Person::sayHi(){
