@@ -1,13 +1,10 @@
 #include <iostream>
-#include "../src/Person.cpp"
+#include "../src/model/Customer.cpp"
 using namespace std;
 
 int main()
 {
-	std::cout << "Hello world!" << std::endl;
-	std::cout << "nanta nih bossss!" << std::endl;
-	std::cout << "test" << std::endl;
-	cout << "Anjay" << endl;
-	Person person;
-	person.sayHi();
+	Customer customer;
+	customer.setId(1);
+	printf("%d", customer.getId());
 }
