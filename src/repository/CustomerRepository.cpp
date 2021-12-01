@@ -4,6 +4,9 @@
 #include "../../include/repository/CustomerRepository.h"
 using namespace std;
 
+#define CUSTOMER_FILE_PATH "src//repository//customer.txt"
+// #define CUSTOMER_FILE_PATH "../src/repository/customer.txt"
+
 CustomerRepository* CustomerRepository::_instance = NULL;
 
 CustomerRepository* CustomerRepository::getInstance(){
@@ -16,8 +19,7 @@ CustomerRepository* CustomerRepository::getInstance(){
 vector<Customer> CustomerRepository::readCustomerFile(){
     ifstream infile;
     customerList.clear();
-    infile.open("src//repository//customer.txt");
-    // infile.open("../src/repository/customer.txt");
+    infile.open(CUSTOMER_FILE_PATH);
     if (!infile.is_open())
     {
         printf("Sorry! File not found");
@@ -30,13 +32,23 @@ vector<Customer> CustomerRepository::readCustomerFile(){
         stringstream temp(line);
         string str;
         int i = 0;
-        while (getline(temp, str, ','))
+        while (getline(temp, str, '_'))
         {
             arr[i] = str;
             i++;
         }
-        customerList.push_back(Customer(1, arr[1], arr[2], arr[3], arr[4]));
+        customerList.push_back(Customer(std::stol(arr[0]), arr[1], arr[2], arr[3], arr[4]));
     }
     infile.close();
     return customerList;
+}
+
+void CustomerRepository::writeCustomerFile(Customer customer){
+    FILE *outfile;
+    outfile = fopen(CUSTOMER_FILE_PATH, "ab");
+    if (outfile)
+    {
+        fprintf(outfile, "\n%d_%s_%s_%s_%s", customer.getId(), customer.getName().c_str(), customer.getAddress().c_str(), customer.getPhone().c_str(), customer.getKTPNumber().c_str());
+    }
+    fclose(outfile);
 }

@@ -63,3 +63,7 @@ string Customer::getKTPNumber()
 void Customer::print(){
     printf("Customer(id=%d, name=%s, address=%s, phone=%s, KTP_number=%s)\n",this->id, this->name.c_str(), this->address.c_str(), this->phone.c_str(), this->KTP_number.c_str());
 }
+
+bool Customer::isEquals(Customer target){
+    return this->id == target.getId();
+}
