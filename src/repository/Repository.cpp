@@ -25,7 +25,7 @@ vector<T> Repository<T>::readObjectFile()
     while (infile.peek() != EOF)
     {
         getline(infile, line);
-        this->objectList.push_back(this->stringToObject(line));
+        this->objectList.push_back(stringToObject(line));
     }
     infile.close();
     return this->objectList;

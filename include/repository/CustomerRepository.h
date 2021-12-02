@@ -10,7 +10,7 @@ class CustomerRepository : public Repository<Customer>{
         CustomerRepository();
     public:
         static CustomerRepository* getInstance();
-        Customer stringToObject(string data) override {return Customer();};
+        // Customer stringToObject(string data) override {};
         // vector<Customer> readCustomerFile();
         // void writeCustomerFile(Customer customer);
 };
