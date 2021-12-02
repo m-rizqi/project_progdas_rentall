@@ -32,6 +32,17 @@ Customer Repository<Customer>::stringToObject(string data){
     return Customer(std::stol(arr[0]), arr[1], arr[2], arr[3], arr[4]);
 }
 
+template <>
+string Repository<Customer>::objectToString(Customer customer)
+{
+    string buffer = "\n"+to_string(customer.getId())
+        +"_"+customer.getName()
+        +"_"+customer.getAddress()
+        +"_"+customer.getPhone()
+        +"_"+customer.getKTPNumber();
+    return buffer;
+}
+
 // vector<Customer> CustomerRepository::readCustomerFile(){
 //     ifstream infile;
 //     customerList.clear();

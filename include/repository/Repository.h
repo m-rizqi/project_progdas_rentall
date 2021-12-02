@@ -14,6 +14,6 @@ public:
     void updateObject(T object);
     void deleteObject(T object);
     T findObject(long id);
-    string objectToString(T object);
+    virtual string objectToString(T object);
     virtual T stringToObject(string data);
 };

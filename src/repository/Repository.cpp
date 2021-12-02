@@ -31,4 +31,15 @@ vector<T> Repository<T>::readObjectFile()
     return this->objectList;
 }
 
+template <class T>
+void Repository<T>::appendObjectFile(T object){
+    FILE *outfile;
+    outfile = fopen(this->filePath.c_str(), "ab");
+    if (outfile)
+    {
+        fprintf(outfile, objectToString(object).c_str());
+    }
+    fclose(outfile);
+}
+
 template class Repository<Customer>;
