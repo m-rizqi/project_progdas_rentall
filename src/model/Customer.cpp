@@ -1,69 +1,122 @@
-#include "../../include/model/Customer.h"
+/**
+ * Project Untitled
+ */
 
-Customer::Customer(long id, string name, string address, string phone, string KTP_number){
-    this->id = id;
-    this->name = name;
-    this->address = address;
-    this->phone = phone;
-    this->KTP_number = KTP_number;
+
+#include "Customer.h"
+
+/**
+ * Customer implementation
+ */
+
+
+void Customer::Customer() {
+
 }
 
-Customer::Customer(){
-    Customer(0,"default","default",0,"default");
+/**
+ * @param id
+ * @param name
+ * @param address
+ * @param phone
+ * @param KTP_number
+ */
+void Customer::Customer(long id, string name, string address, string phone, string KTP_number) {
+
 }
 
-void Customer::setId(long id){
-    this->id = id;
+/**
+ * Set the customer's id
+ * @param id
+ */
+void Customer::setId(long id) {
+
 }
 
-long Customer::getId(){
-    return this->id;
+/**
+ * Return the customer's id
+ * @return long
+ */
+long Customer::getId() {
+    return 0;
 }
 
-void Customer::setName(string name)
-{
-    this->name = name;
+/**
+ * Set the customer's name
+ * @param name
+ */
+void Customer::setName(string name) {
+
 }
 
-string Customer::getName()
-{
-    return this->name;
+/**
+ * Return the customer's name
+ * @return string
+ */
+string Customer::getName() {
+    return "";
 }
 
-void Customer::setAddress(string address)
-{
-    this->address = address;
+/**
+ * Set the customer's address
+ * @param address
+ */
+void Customer::setAddress(string address) {
+
 }
 
-string Customer::getAddress()
-{
-    return this->address;
+/**
+ * Return the customer's address
+ * @return string
+ */
+string Customer::getAddress() {
+    return "";
 }
 
-void Customer::setPhone(string phone)
-{
-    this->phone = phone;
+/**
+ * Set the customer's phone number
+ * @param long phone
+ */
+void Customer::setPhone(void long phone) {
+
 }
 
-string Customer::getPhone()
-{
-    return this->phone;
+/**
+ * Return the customer's phone number
+ * @return long
+ */
+long Customer::getPhone() {
+    return 0;
 }
 
-void Customer::setKTPNumber(string KTP_number)
-{
-    this->KTP_number = KTP_number;
+/**
+ * Set the customer's KTP number
+ * @param KTP_number
+ */
+void Customer::setKTPNumber(string KTP_number) {
+
 }
 
-string Customer::getKTPNumber()
-{
-    return this->KTP_number;
+/**
+ * Return the customer's KTP number
+ * @return string
+ */
+string Customer::getKTPNumber() {
+    return "";
 }
 
-void Customer::print(){
-    printf("Customer(id=%d, name=%s, address=%s, phone=%s, KTP_number=%s)\n",this->id, this->name.c_str(), this->address.c_str(), this->phone.c_str(), this->KTP_number.c_str());
+/**
+ * Print customer information detail
+ * @return void
+ */
+void Customer::print() {
+    return;
 }
 
-bool Customer::isEquals(Customer target){
-    return this->id == target.getId();
+/**
+ * Comparing two customers whether the same or not.
+ * @return bool
+ */
+bool Customer::isEquals() {
+    return false;
 }

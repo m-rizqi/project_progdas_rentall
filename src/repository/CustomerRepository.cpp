@@ -1,81 +1,35 @@
-#include <fstream>
-#include <sstream>
-#include <string>
-#include "../../include/repository/CustomerRepository.h"
-using namespace std;
+/**
+ * Project Untitled
+ */
 
-#define CUSTOMER_FILE_PATH "src//repository//customer.txt"
-// #define CUSTOMER_FILE_PATH "../src/repository/customer.txt"
 
-CustomerRepository* CustomerRepository::_instance = NULL;
+#include "CustomerRepository.h"
 
-CustomerRepository::CustomerRepository() : Repository<Customer>(CUSTOMER_FILE_PATH){}
+/**
+ * CustomerRepository implementation
+ */
 
-CustomerRepository* CustomerRepository::getInstance(){
-    if(CustomerRepository::_instance == NULL){
-        CustomerRepository::_instance = new CustomerRepository();
-    }
-    return CustomerRepository::_instance;
+
+/**
+ * @param line
+ * @return Customer
+ */
+Customer CustomerRepository::stringToData(string line) {
+    return null;
 }
 
-template <>
-Customer Repository<Customer>::stringToObject(string data){
-    string arr[5];
-    stringstream temp(data);
-    string str;
-    int i = 0;
-    while (getline(temp, str, '_'))
-    {
-        arr[i] = str;
-        i++;
-    }
-    return Customer(std::stol(arr[0]), arr[1], arr[2], arr[3], arr[4]);
+/**
+ * @param customer
+ * @return string
+ */
+string CustomerRepository::dataToString(Customer customer) {
+    return "";
 }
 
-template <>
-string Repository<Customer>::objectToString(Customer customer)
-{
-    string buffer = "\n"+to_string(customer.getId())
-        +"_"+customer.getName()
-        +"_"+customer.getAddress()
-        +"_"+customer.getPhone()
-        +"_"+customer.getKTPNumber();
-    return buffer;
+/**
+ * @param name
+ * @return Customer
+ */
+Customer CustomerRepository::searchByName(string name) {
+    return null;
 }
-
-// vector<Customer> CustomerRepository::readCustomerFile(){
-//     ifstream infile;
-//     customerList.clear();
-//     infile.open(CUSTOMER_FILE_PATH);
-//     if (!infile.is_open())
-//     {
-//         printf("Sorry! File not found");
-//         exit(0);
-//     }
-//     string line;
-//     while(infile.peek() != EOF){
-//         getline(infile, line);
-//         string arr[5];
-//         stringstream temp(line);
-//         string str;
-//         int i = 0;
-//         while (getline(temp, str, '_'))
-//         {
-//             arr[i] = str;
-//             i++;
-//         }
-//         customerList.push_back(Customer(std::stol(arr[0]), arr[1], arr[2], arr[3], arr[4]));
-//     }
-//     infile.close();
-//     return customerList;
-// }
-
-// void CustomerRepository::writeCustomerFile(Customer customer){
-//     FILE *outfile;
-//     outfile = fopen(CUSTOMER_FILE_PATH, "ab");
-//     if (outfile)
-//     {
-//         fprintf(outfile, "\n%d_%s_%s_%s_%s", customer.getId(), customer.getName().c_str(), customer.getAddress().c_str(), customer.getPhone().c_str(), customer.getKTPNumber().c_str());
-//     }
-//     fclose(outfile);
-// }

@@ -1,19 +1,61 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+/**
+ * Project Untitled
+ */
 
-template <class T>
-class Repository{
-    private:
-    vector<T> objectList;
-    string filePath;
-public:
-    Repository(string filePath);
-    vector<T> readObjectFile();
-    void appendObjectFile(T object);
-    void updateObject(T object);
-    void deleteObject(T object);
-    T findObject(long id);
-    virtual string objectToString(T object);
-    virtual T stringToObject(string data);
+
+#ifndef _REPOSITORY_H
+#define _REPOSITORY_H
+
+class Repository {
+public: 
+    
+/**
+ * read file and then convert it into object of T
+ */
+vector<T> readAllData();
+    
+/**
+ * add new line into data file
+ * @param object
+ */
+void appendData(T object);
+    
+/**
+ * change line that represent the data
+ * @param object
+ */
+void updateData(T object);
+    
+/**
+ * delete line that represent the data
+ * @param id
+ */
+void deleteData(long id);
+    
+/**
+ * find line that match with id and then convert it into object of T
+ * @param id
+ */
+T findData(long id);
+    
+/**
+ * convert string (form read data) into object of T
+ * @param line
+ */
+virtual T stringToData(string line) = 0;
+    
+/**
+ * convert object of T into string to store it int file
+ * @param object
+ */
+virtual string dataToString(T object) = 0;
+    
+long generateId();
+private: 
+    /**
+ * List of all customer data from database
+ */
+vector<T> objectList;
 };
+
+#endif //_REPOSITORY_H

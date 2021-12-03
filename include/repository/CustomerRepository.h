@@ -1,16 +1,28 @@
-#include <iostream>
-#include <vector>
-#include "../../src/repository/Repository.cpp"
-using namespace std;
+/**
+ * Project Untitled
+ */
 
-class CustomerRepository : public Repository<Customer>{
-    private:
-        // vector<Customer> customerList;
-        static CustomerRepository* _instance;
-        CustomerRepository();
-    public:
-        static CustomerRepository* getInstance();
-        // Customer stringToObject(string data) override {};
-        // vector<Customer> readCustomerFile();
-        // void writeCustomerFile(Customer customer);
+
+#ifndef _CUSTOMERREPOSITORY_H
+#define _CUSTOMERREPOSITORY_H
+
+class CustomerRepository {
+public: 
+    
+/**
+ * @param line
+ */
+Customer stringToData(string line);
+    
+/**
+ * @param customer
+ */
+string dataToString(Customer customer);
+    
+/**
+ * @param name
+ */
+Customer searchByName(string name);
 };
+
+#endif //_CUSTOMERREPOSITORY_H
