@@ -11,18 +11,9 @@ using namespace std;
 #define CUSTOMER_FILE_PATH "src//repository//customer.txt"
 // #define CUSTOMER_FILE_PATH "../src/repository/customer.txt"
 
-CustomerRepository *CustomerRepository::_instance = NULL;
 
 CustomerRepository::CustomerRepository() : Repository<Customer>(CUSTOMER_FILE_PATH) {}
 
-CustomerRepository *CustomerRepository::getInstance()
-{
-    if (CustomerRepository::_instance == NULL)
-    {
-        CustomerRepository::_instance = new CustomerRepository();
-    }
-    return CustomerRepository::_instance;
-}
 /**
  * @param line
  * @return Customer

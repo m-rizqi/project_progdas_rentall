@@ -7,11 +7,9 @@ using namespace std;
 class CustomerRepository : public Repository<Customer>{
 public:
 /**
- * @brief Get the Instance object
- * 
- * @return CustomerRepository* 
+ * constructor 
  */
-static CustomerRepository *getInstance();
+CustomerRepository();
 
 /**
  * @param name
@@ -19,12 +17,4 @@ static CustomerRepository *getInstance();
 Customer searchByName(string name);
 
 private:
-/**
-* Singleton class
-*/
-static CustomerRepository *_instance;
-/**
- * private consturctor
- */
-CustomerRepository();
 };
