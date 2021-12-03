@@ -1,9 +1,9 @@
-/**
- * Project Untitled
- */
-
-
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "Repository.h"
+#include "../../include/repository/Repository.h"
+#include "../../include/model/Customer.h"
 
 /**
  * Repository implementation
@@ -11,35 +11,71 @@
 
 
 /**
+ * constructor
+ */
+template <class T>
+Repository<T>::Repository(string filePath)
+{
+    this->filePath = filePath;
+}
+
+/**
  * read file and then convert it into object of T
  * @return vector<T>
  */
-vector<T> Repository::readAllData() {
-    return null;
+template <class T>
+vector<T> Repository<T>::readAllData()
+{
+    ifstream infile;
+    this->objectList.clear();
+    infile.open(this->filePath);
+    if (!infile.is_open())
+    {
+        printf("Sorry! File not found");
+        exit(0);
+    }
+    string line;
+    while (infile.peek() != EOF)
+    {
+        getline(infile, line);
+        this->objectList.push_back(stringToObject(line));
+    }
+    infile.close();
+    return this->objectList;
 }
 
 /**
  * add new line into data file
  * @param object
  */
-void Repository::appendData(T object) {
-
+template <class T>
+void Repository<T>::appendData(T object)
+{
+    FILE *outfile;
+    outfile = fopen(this->filePath.c_str(), "ab");
+    if (outfile)
+    {
+        fprintf(outfile, objectToString(object).c_str());
+    }
+    fclose(outfile);
 }
 
 /**
  * change line that represent the data
  * @param object
  */
-void Repository::updateData(T object) {
-
+template <class T>
+void Repository<T>::updateData(T object)
+{
 }
 
 /**
  * delete line that represent the data
  * @param id
  */
-void Repository::deleteData(long id) {
-
+template <class T>
+void Repository<T>::deleteData(long id)
+{
 }
 
 /**
@@ -47,31 +83,19 @@ void Repository::deleteData(long id) {
  * @param id
  * @return T
  */
-T Repository::findData(long id) {
+template <class T>
+T Repository<T>::findData(long id)
+{
     return null;
-}
-
-/**
- * convert string (form read data) into object of T
- * @param line
- * @return T
- */
-virtual T Repository::stringToData(string line) {
-    return null;
-}
-
-/**
- * convert object of T into string to store it int file
- * @param object
- * @return string
- */
-virtual string Repository::dataToString(T object) {
-    return "";
 }
 
 /**
  * @return long
  */
-long Repository::generateId() {
+template <class T>
+long Repository<T>::generateId()
+{
     return 0;
 }
+
+template class Repository<Customer>;

@@ -1,7 +1,5 @@
-/**
- * Project Untitled
- */
-
+#include <iostream>
+using namespace std;
 
 #ifndef _CUSTOMER_H
 #define _CUSTOMER_H
@@ -9,7 +7,7 @@
 class Customer {
 public: 
     
-void Customer();
+Customer();
     
 /**
  * @param id
@@ -18,7 +16,7 @@ void Customer();
  * @param phone
  * @param KTP_number
  */
-void Customer(long id, string name, string address, string phone, string KTP_number);
+Customer(long id, string name, string address, string phone, string KTP_number);
     
 /**
  * Set the customer's id
@@ -57,12 +55,12 @@ string getAddress();
  * Set the customer's phone number
  * @param long phone
  */
-void setPhone(void long phone);
+void setPhone(string phone);
     
 /**
  * Return the customer's phone number
  */
-long getPhone();
+string getPhone();
     
 /**
  * Set the customer's KTP number
@@ -83,7 +81,7 @@ void print();
 /**
  * Comparing two customers whether the same or not.
  */
-bool isEquals();
+bool isEquals(Customer target);
 private: 
     /**
  * Id will generated automatically
@@ -100,7 +98,7 @@ string address;
     /**
  * Phone number's customer with the format : 08xxxxxxxxxx
  */
-long phone;
+string phone;
     /**
  * 16 digit of number in KTP
  */

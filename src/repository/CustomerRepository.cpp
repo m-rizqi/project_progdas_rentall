@@ -1,35 +1,62 @@
-/**
- * Project Untitled
- */
-
-
-#include "CustomerRepository.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+#include "../../include/repository/CustomerRepository.h"
+using namespace std;
 
 /**
  * CustomerRepository implementation
  */
 
+#define CUSTOMER_FILE_PATH "src//repository//customer.txt"
+// #define CUSTOMER_FILE_PATH "../src/repository/customer.txt"
 
+CustomerRepository *CustomerRepository::_instance = NULL;
+
+CustomerRepository::CustomerRepository() : Repository<Customer>(CUSTOMER_FILE_PATH) {}
+
+CustomerRepository *CustomerRepository::getInstance()
+{
+    if (CustomerRepository::_instance == NULL)
+    {
+        CustomerRepository::_instance = new CustomerRepository();
+    }
+    return CustomerRepository::_instance;
+}
 /**
  * @param line
  * @return Customer
  */
-Customer CustomerRepository::stringToData(string line) {
-    return null;
+template <>
+Customer Repository<Customer>::stringToData(string line)
+{
+    string arr[5];
+    stringstream temp(line);
+    string str;
+    int i = 0;
+    while (getline(temp, str, '_'))
+    {
+        arr[i] = str;
+        i++;
+    }
+    return Customer(std::stol(arr[0]), arr[1], arr[2], arr[3], arr[4]);
 }
 
 /**
  * @param customer
  * @return string
  */
-string CustomerRepository::dataToString(Customer customer) {
-    return "";
+template <>
+string Repository<Customer>::dataToString(Customer customer)
+{
+    return "\n" + to_string(customer.getId()) + "_" + customer.getName() + "_" + customer.getAddress() + "_" + customer.getPhone() + "_" + customer.getKTPNumber();
 }
 
 /**
  * @param name
  * @return Customer
  */
-Customer CustomerRepository::searchByName(string name) {
-    return null;
+Customer CustomerRepository::searchByName(string name)
+{
+    return _Null_;
 }
