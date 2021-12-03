@@ -49,5 +49,5 @@ string Repository<Customer>::dataToString(Customer customer)
  */
 Customer CustomerRepository::searchByName(string name)
 {
-    return _Null_;
+    return Customer();
 }

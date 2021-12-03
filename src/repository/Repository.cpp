@@ -1,7 +1,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "Repository.h"
 #include "../../include/repository/Repository.h"
 #include "../../include/model/Customer.h"
 
@@ -38,7 +37,7 @@ vector<T> Repository<T>::readAllData()
     while (infile.peek() != EOF)
     {
         getline(infile, line);
-        this->objectList.push_back(stringToObject(line));
+        this->objectList.push_back(stringToData(line));
     }
     infile.close();
     return this->objectList;
@@ -55,7 +54,7 @@ void Repository<T>::appendData(T object)
     outfile = fopen(this->filePath.c_str(), "ab");
     if (outfile)
     {
-        fprintf(outfile, objectToString(object).c_str());
+        fprintf(outfile, dataToString(object).c_str());
     }
     fclose(outfile);
 }
@@ -86,7 +85,7 @@ void Repository<T>::deleteData(long id)
 template <class T>
 T Repository<T>::findData(long id)
 {
-    return null;
+    return T();
 }
 
 /**
