@@ -2,9 +2,6 @@
 #include <vector>
 using namespace std;
 
-#ifndef _REPOSITORY_H
-#define _REPOSITORY_H
-
 /**
  * Parent Class 
  */
@@ -49,13 +46,13 @@ public:
      * convert string (form read data) into object of T
      * @param line
      */
-    virtual T stringToData(string line) = 0;
+    virtual T stringToData(string line);
 
     /**
      * convert object of T into string to store it int file
      * @param object
      */
-    virtual string dataToString(T object) = 0;
+    virtual string dataToString(T object);
 
     long generateId();
 private: 
@@ -65,5 +62,3 @@ private:
 vector<T> objectList;
 string filePath;
 };
-
-#endif //_REPOSITORY_H
