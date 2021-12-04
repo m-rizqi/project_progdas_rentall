@@ -74,7 +74,9 @@ void Repository<T>::updateData(T object)
     {
         for(int i = 0; i < listObject.size(); i++){
             T temp = listObject.at(i);
-            fprintf(outfile, dataToString((temp.isEquals(object)) ? object : temp).c_str());
+            string line = dataToString((temp.isEquals(object)) ? object : temp);
+            line = ((i==0) ? line : ("\n"+line));
+            fprintf(outfile, line.c_str());
         }
     }
     fclose(outfile);
@@ -97,6 +99,9 @@ void Repository<T>::deleteData(long id)
 template <class T>
 T Repository<T>::findData(long id)
 {
+    vector<T> listObject = readAllData();
+    T res = T();
+    // for(T temp : listObject)    
     return T();
 }
 

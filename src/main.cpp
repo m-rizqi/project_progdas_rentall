@@ -11,14 +11,15 @@ int main()
 	{
 		customerList.at(i).print();
 	}
-	string name, address, phone, KTP_number;
+	string name, address, phone, KTP_number, id;
+	getline(cin, id);
 	getline(cin, name);
 	getline(cin, address);
 	getline(cin, phone);
 	getline(cin, KTP_number);
 
-	Customer customer2(0, name, address, phone, KTP_number);
-	customerRepo.appendData(customer2);
+	Customer customer2(stol(id), name, address, phone, KTP_number);
+	customerRepo.updateData(customer2);
 	customerList = customerRepo.readAllData();
 	for (int i = 0; i < customerList.size(); i++)
 	{
