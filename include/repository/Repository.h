@@ -1,6 +1,10 @@
+#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
+
+#ifndef REPOSITORY_H
+#define REPOSITORY_H
 
 /**
  * Parent Class 
@@ -62,3 +66,5 @@ private:
 vector<T> objectList;
 string filePath;
 };
+
+#endif // REPOSITORY_H

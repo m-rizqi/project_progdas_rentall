@@ -3,6 +3,7 @@
 #include <string>
 #include "../../include/repository/Repository.h"
 #include "../../include/model/Customer.h"
+#include "../../include/model/Car.h"
 
 /**
  * Repository implementation
@@ -148,3 +149,4 @@ long Repository<T>::generateId()
 }
 
 template class Repository<Customer>;
+template class Repository<Car>;

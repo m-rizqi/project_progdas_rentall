@@ -1,6 +1,6 @@
-/**
- * Project Untitled
- */
+#pragma once
+#include <iostream>
+using namespace std;
 
 #ifndef _CAR_H
 #define _CAR_H
@@ -8,14 +8,15 @@
 class Car
 {
 public:
-    void Car();
+    Car();
 
     /**
      * @param id
      * @param name
      * @param police_number
+     * @param rented
      */
-    void Car(long id, string name, string police_number);
+    Car(long id, string name, string police_number, bool rented);
 
     /**
      * Set the cars' id
@@ -65,7 +66,7 @@ public:
     /**
      * Comparing two cars whether the same or not.
      */
-    bool isEquals();
+    bool isEquals(Car target);
 
 private:
     /**
@@ -80,6 +81,9 @@ private:
      * Number police of the car
      */
     string police_number;
+    /**
+     * Condition is the car rented 
+     */
     bool rented;
 };
 

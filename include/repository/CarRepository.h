@@ -1,25 +1,23 @@
-/**
- * Project Untitled
- */
+#pragma once
+#include <iostream>
+#include <vector>
+#include "../../src/repository/Repository.cpp"
+using namespace std;
 
+#ifndef CAR_REPOSITORY_H
+#define CAR_REPOSITORY_H
 
-#ifndef _CARREPOSITORY_H
-#define _CARREPOSITORY_H
-
-class CarRepository {
-public: 
-    
-/**
- * @param line
- */
-Car stringToData(string line);
-    
-void dataToString();
-    
-/**
- * @param line
- */
-Car searchByName(string line);
+class CarRepository : public Repository<Car>{
+public:
+    /**
+     * constructor
+     */
+    CarRepository();
+    /**
+     * @param name
+     */
+    Car searchByName(string name);
+private:
 };
 
-#endif //_CARREPOSITORY_H
+#endif
