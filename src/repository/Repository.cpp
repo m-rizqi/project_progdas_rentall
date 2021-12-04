@@ -55,7 +55,11 @@ void Repository<T>::appendData(T object)
     outfile = fopen(this->filePath.c_str(), "ab");
     if (outfile)
     {
-        fprintf(outfile, ("\n" + dataToString(object)).c_str());
+        string line = dataToString(object);
+        if(readAllData().size() > 0){
+            line = "\n"+line;
+        }
+        fprintf(outfile, line.c_str());
     }
     fclose(outfile);
 }
@@ -89,6 +93,25 @@ void Repository<T>::updateData(T object)
 template <class T>
 void Repository<T>::deleteData(long id)
 {
+    vector<T> listObject;
+    for(auto &temp : readAllData()){
+        if(temp.getId() != id){
+            listObject.push_back(temp);
+        }
+    }
+    FILE *outfile;
+    outfile = fopen(this->filePath.c_str(), "w");
+    if (outfile)
+    {
+        for (int i = 0; i < listObject.size(); i++)
+        {
+            T temp = listObject.at(i);
+            string line = dataToString(temp);
+            line = ((i == 0) ? line : ("\n" + line));
+            fprintf(outfile, line.c_str());
+        }
+    }
+    fclose(outfile);
 }
 
 /**
@@ -101,8 +124,13 @@ T Repository<T>::findData(long id)
 {
     vector<T> listObject = readAllData();
     T res = T();
-    // for(T temp : listObject)    
-    return T();
+    for(auto &temp : listObject){
+        if(temp.getId() == id){
+            res = temp;
+            break;
+        }
+    }    
+    return res;
 }
 
 /**
@@ -111,39 +139,12 @@ T Repository<T>::findData(long id)
 template <class T>
 long Repository<T>::generateId()
 {
-    ifstream infile;
-    this->objectList.clear();
-    infile.open(this->filePath);
-    if (!infile.is_open()){return 0;}
-    infile.seekg(-1, ios_base::end);
-    bool keepLooping = true;
-    while (keepLooping)
-    {
-        char ch;
-        infile.get(ch); // Get current byte's data
-
-        if ((int)infile.tellg() <= 1)
-        {                        // If the data was at or before the 0th byte
-            infile.seekg(0);        // The first line is the last line
-            keepLooping = false; // So stop there
-        }
-        else if (ch == '\n')
-        {                        // If the data was a newline
-            keepLooping = false; // Stop at the current position.
-        }
-        else
-        {                                 // If the data was neither a newline nor at the 0 byte
-            infile.seekg(-2, ios_base::cur); // Move to the front of that data, then to the front of the data before it
-        }
+    vector<T> listObject = readAllData();
+    if(listObject.size() == 0){
+        return 1;
     }
-
-    string lastLine;
-    getline(infile, lastLine);
-    stringstream temp(lastLine);
-    string str;
-    getline(temp, str, '_');
-    infile.close();
-    return stol(str)+1;
+    T temp = listObject.at(listObject.size() - 1);
+    return temp.getId() + 1;
 }
 
 template class Repository<Customer>;
