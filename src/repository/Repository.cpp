@@ -50,11 +50,12 @@ vector<T> Repository<T>::readAllData()
 template <class T>
 void Repository<T>::appendData(T object)
 {
+    object.setId(generateId());
     FILE *outfile;
     outfile = fopen(this->filePath.c_str(), "ab");
     if (outfile)
     {
-        fprintf(outfile, dataToString(object).c_str());
+        fprintf(outfile, ("\n" + dataToString(object)).c_str());
     }
     fclose(outfile);
 }
@@ -66,6 +67,17 @@ void Repository<T>::appendData(T object)
 template <class T>
 void Repository<T>::updateData(T object)
 {
+    vector<T> listObject = readAllData();
+    FILE *outfile;
+    outfile = fopen(this->filePath.c_str(), "w");
+    if (outfile)
+    {
+        for(int i = 0; i < listObject.size(); i++){
+            T temp = listObject.at(i);
+            fprintf(outfile, dataToString((temp.isEquals(object)) ? object : temp).c_str());
+        }
+    }
+    fclose(outfile);
 }
 
 /**
@@ -94,7 +106,39 @@ T Repository<T>::findData(long id)
 template <class T>
 long Repository<T>::generateId()
 {
-    return 0;
+    ifstream infile;
+    this->objectList.clear();
+    infile.open(this->filePath);
+    if (!infile.is_open()){return 0;}
+    infile.seekg(-1, ios_base::end);
+    bool keepLooping = true;
+    while (keepLooping)
+    {
+        char ch;
+        infile.get(ch); // Get current byte's data
+
+        if ((int)infile.tellg() <= 1)
+        {                        // If the data was at or before the 0th byte
+            infile.seekg(0);        // The first line is the last line
+            keepLooping = false; // So stop there
+        }
+        else if (ch == '\n')
+        {                        // If the data was a newline
+            keepLooping = false; // Stop at the current position.
+        }
+        else
+        {                                 // If the data was neither a newline nor at the 0 byte
+            infile.seekg(-2, ios_base::cur); // Move to the front of that data, then to the front of the data before it
+        }
+    }
+
+    string lastLine;
+    getline(infile, lastLine);
+    stringstream temp(lastLine);
+    string str;
+    getline(temp, str, '_');
+    infile.close();
+    return stol(str)+1;
 }
 
 template class Repository<Customer>;

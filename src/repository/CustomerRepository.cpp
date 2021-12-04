@@ -40,7 +40,7 @@ Customer Repository<Customer>::stringToData(string line)
 template <>
 string Repository<Customer>::dataToString(Customer customer)
 {
-    return "\n" + to_string(customer.getId()) + "_" + customer.getName() + "_" + customer.getAddress() + "_" + customer.getPhone() + "_" + customer.getKTPNumber();
+    return to_string(customer.getId()) + "_" + customer.getName() + "_" + customer.getAddress() + "_" + customer.getPhone() + "_" + customer.getKTPNumber();
 }
 
 /**
