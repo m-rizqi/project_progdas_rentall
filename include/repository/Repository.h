@@ -1,10 +1,11 @@
+#ifndef REPOSITORY_H
+#define REPOSITORY_H
 #pragma once
 #include <iostream>
 #include <vector>
+#include "../../include/model/Customer.h"
+#include "../../include/model/Car.h"
 using namespace std;
-
-#ifndef REPOSITORY_H
-#define REPOSITORY_H
 
 /**
  * Parent Class 
@@ -67,4 +68,7 @@ vector<T> objectList;
 string filePath;
 };
 
-#endif // REPOSITORY_H
+template class Repository<Customer>;
+template class Repository<Car>;
+
+#endif

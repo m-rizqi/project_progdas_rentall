@@ -2,9 +2,6 @@
 #include <iostream>
 using namespace std;
 
-#ifndef _CAR_H
-#define _CAR_H
-
 class Car
 {
 public:
@@ -87,4 +84,3 @@ private:
     bool rented;
 };
 
-#endif //_CAR_H

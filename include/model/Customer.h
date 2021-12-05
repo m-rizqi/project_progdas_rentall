@@ -2,9 +2,6 @@
 #include <iostream>
 using namespace std;
 
-#ifndef _CUSTOMER_H
-#define _CUSTOMER_H
-
 class Customer {
 public: 
     
@@ -105,5 +102,3 @@ string phone;
  */
 string KTP_number;
 };
-
-#endif //_CUSTOMER_H

@@ -1,9 +1,10 @@
+#ifndef REPOSITORY_CPP
+#define REPOSITORY_CPP
 #include <fstream>
 #include <sstream>
 #include <string>
 #include "../../include/repository/Repository.h"
-#include "../../include/model/Customer.h"
-#include "../../include/model/Car.h"
+
 
 /**
  * Repository implementation
@@ -148,5 +149,4 @@ long Repository<T>::generateId()
     return temp.getId() + 1;
 }
 
-template class Repository<Customer>;
-template class Repository<Car>;
+#endif

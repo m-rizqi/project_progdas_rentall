@@ -4,9 +4,6 @@
 #include "../../src/repository/Repository.cpp"
 using namespace std;
 
-#ifndef CUSTOMER_REPOSITORY_H
-#define CUSTOMER_REPOSITORY_H
-
 class CustomerRepository : public Repository<Customer>
 {
 public:
@@ -22,5 +19,3 @@ public:
 
 private:
 };
-
-#endif

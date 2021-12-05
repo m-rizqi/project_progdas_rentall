@@ -4,9 +4,6 @@
 #include "../../src/repository/Repository.cpp"
 using namespace std;
 
-#ifndef CAR_REPOSITORY_H
-#define CAR_REPOSITORY_H
-
 class CarRepository : public Repository<Car>{
 public:
     /**
@@ -19,5 +16,3 @@ public:
     Car searchByName(string name);
 private:
 };
-
-#endif
