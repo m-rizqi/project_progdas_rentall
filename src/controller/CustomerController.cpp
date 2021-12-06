@@ -81,7 +81,21 @@ void CustomerController::updateCustomer()
         printf("Masukkan nama customer : \n");
         string _name;
         getline(cin, _name);
-        oldCustomer = customerRepository.searchByName(_name);
+        vector<Customer> result = customerRepository.searchByName(_name);
+        if(result.size() == 0){
+            oldCustomer = result.at(0);
+        }else{
+            printf("!! Terdapat beberapa customer dengan nama yang sama !!\n");
+            for(Customer c : result){
+                c.print();
+                printf("\n");
+            }
+            printf("Masukkan Id dari customer yang dimaksud!\n");
+            long id;
+            cin>>id;
+            getline(cin, temp);
+            oldCustomer = customerRepository.findData(id);
+        }
     }
     break;
     default:
@@ -190,6 +204,7 @@ void CustomerController::updateCustomer()
  */
 void CustomerController::deleteCustomer()
 {
+    printf("--  U D P D A T E   C U S T O M E R  --\n");
 }
 
 /**

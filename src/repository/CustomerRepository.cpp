@@ -47,14 +47,13 @@ string Repository<Customer>::dataToString(Customer customer)
  * @param name
  * @return Customer
  */
-Customer CustomerRepository::searchByName(string name)
+vector<Customer> CustomerRepository::searchByName(string name)
 {
-    Customer customer = Customer();
+    vector<Customer> list;
     for(Customer c : readAllData()){
         if(c.getName() == name){
-            customer = c;
-            break;
+            list.push_back(c);
         }
     }
-    return customer;
+    return list;
 }

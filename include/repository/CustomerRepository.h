@@ -16,7 +16,7 @@ public:
     /**
      * @param name
      */
-    Customer searchByName(string name);
+    vector<Customer> searchByName(string name);
 
 private:
 };

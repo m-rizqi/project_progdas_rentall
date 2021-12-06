@@ -47,15 +47,14 @@ string Repository<Car>::dataToString(Car object)
  * @param name
  * @return Car
  */
-Car CarRepository::searchByName(string name) {
-    Car car = Car();
+vector<Car> CarRepository::searchByName(string name) {
+    vector<Car> list;
     for (Car c : readAllData())
     {
         if (c.getName() == name)
         {
-            car = c;
-            break;
+            list.push_back(c);
         }
     }
-    return car;
+    return list;
 }

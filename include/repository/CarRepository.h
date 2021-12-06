@@ -14,6 +14,6 @@ public:
     /**
      * @param name
      */
-    Car searchByName(string name);
+    vector<Car> searchByName(string name);
 private:
 };
