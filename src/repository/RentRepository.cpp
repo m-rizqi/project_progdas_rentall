@@ -51,7 +51,14 @@ string Repository<RentForm>::dataToString(RentForm object)
  * @return RentForm
  */
 RentForm RentRepository::searchByCustomerId(long customerId) {
-    return RentForm();
+    RentForm rentForm = RentForm();
+    for(RentForm rF : readAllData()){
+        if(rF.getCustomerId() == customerId){
+            rentForm = rF;
+            break;
+        }
+    }
+    return rentForm;
 }
 
 /**
@@ -59,7 +66,16 @@ RentForm RentRepository::searchByCustomerId(long customerId) {
  * @return RentForm
  */
 RentForm RentRepository::searchByCarId(long carId) {
-    return RentForm();
+    RentForm rentForm = RentForm();
+    for (RentForm rF : readAllData())
+    {
+        if (rF.getCarId() == carId)
+        {
+            rentForm = rF;
+            break;
+        }
+    }
+    return rentForm;
 }
 
 /**
@@ -67,7 +83,16 @@ RentForm RentRepository::searchByCarId(long carId) {
  * @return RentForm
  */
 RentForm RentRepository::searchByRentalDate(string rentalDate) {
-    return RentForm();
+    RentForm rentForm = RentForm();
+    for (RentForm rF : readAllData())
+    {
+        if (rF.getRentalDate() == rentalDate)
+        {
+            rentForm = rF;
+            break;
+        }
+    }
+    return rentForm;
 }
 
 /**
@@ -75,7 +100,16 @@ RentForm RentRepository::searchByRentalDate(string rentalDate) {
  * @return RentForm
  */
 RentForm RentRepository::searchByExpectedReturnDate(string expectedReturnDate) {
-    return RentForm();
+    RentForm rentForm = RentForm();
+    for (RentForm rF : readAllData())
+    {
+        if (rF.getExpectedReturnDate() == expectedReturnDate)
+        {
+            rentForm = rF;
+            break;
+        }
+    }
+    return rentForm;
 }
 
 /**
@@ -83,5 +117,14 @@ RentForm RentRepository::searchByExpectedReturnDate(string expectedReturnDate) {
  * @return RentForm
  */
 RentForm RentRepository::searchByReturnDate(string returnDate) {
-    return RentForm();
+    RentForm rentForm = RentForm();
+    for (RentForm rF : readAllData())
+    {
+        if (rF.getReturnDate() == returnDate)
+        {
+            rentForm = rF;
+            break;
+        }
+    }
+    return rentForm;
 }

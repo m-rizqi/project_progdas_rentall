@@ -49,5 +49,12 @@ string Repository<Customer>::dataToString(Customer customer)
  */
 Customer CustomerRepository::searchByName(string name)
 {
-    return Customer();
+    Customer customer = Customer();
+    for(Customer c : readAllData()){
+        if(c.getName() == name){
+            customer = c;
+            break;
+        }
+    }
+    return customer;
 }

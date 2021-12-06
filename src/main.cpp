@@ -44,6 +44,9 @@ int main()
 		customerList.at(i).print();
 	}
 	printf("---------------------------------\n");
+	// Search By Name
+	customerRepo.searchByName("Muhammad Rizqi").print();
+	printf("---------------------------------\n");
 
 
 	// Unit Test Car Repository
@@ -84,6 +87,9 @@ int main()
 		carList.at(i).print();
 	}
 	printf("---------------------------------\n");
+	// Search By Name
+	carRepo.searchByName("Gatau Merek Mobil").print();
+	printf("---------------------------------\n");
 
 	// Unit Test RentForm Repository
 	RentRepository rentformRepo = RentRepository();
@@ -122,6 +128,21 @@ int main()
 	{
 		rentformList.at(i).print();
 	}
+	printf("---------------------------------\n");
+	// Search By Customer Id
+	rentformRepo.searchByCustomerId(2).print();
+	printf("---------------------------------\n");
+	// Search By Car Id
+	rentformRepo.searchByCarId(2).print();
+	printf("---------------------------------\n");
+	// Search By Rental Date
+	rentformRepo.searchByRentalDate("2021-12-6").print();
+	printf("---------------------------------\n");
+	// Search By Expected Return Date
+	rentformRepo.searchByExpectedReturnDate("2021-12-31").print();
+	printf("---------------------------------\n");
+	// Search By Return Date
+	rentformRepo.searchByReturnDate("2022-2-1").print();
 	printf("---------------------------------\n");
 
 	return 0;

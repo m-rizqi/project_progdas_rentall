@@ -44,9 +44,18 @@ string Repository<Car>::dataToString(Car object)
 }
 
 /**
- * @param line
+ * @param name
  * @return Car
  */
-Car CarRepository::searchByName(string line) {
-    return Car();
+Car CarRepository::searchByName(string name) {
+    Car car = Car();
+    for (Car c : readAllData())
+    {
+        if (c.getName() == name)
+        {
+            car = c;
+            break;
+        }
+    }
+    return car;
 }
