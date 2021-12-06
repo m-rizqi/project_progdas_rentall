@@ -126,7 +126,7 @@ string RentForm::getReturnDate() {
 }
 
 void RentForm::print() {
-    printf("RentForm(id=%d,customerId=%d,carId=%d,destination=%s,rentalDate=%s,expectedReturnDate=%s,returnDate=%s)",this->id, this->customerId, this->carId, this->destination.c_str(), this->rentalDate.c_str(), this->expectedReturnDate.c_str(), this->returnDate.c_str());
+    printf("RentForm(id=%d,customerId=%d,carId=%d,destination=%s,rentalDate=%s,expectedReturnDate=%s,returnDate=%s)\n",this->id, this->customerId, this->carId, this->destination.c_str(), this->rentalDate.c_str(), this->expectedReturnDate.c_str(), this->returnDate.c_str());
 }
 
 /**

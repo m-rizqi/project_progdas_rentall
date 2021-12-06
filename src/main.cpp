@@ -19,6 +19,7 @@ int main()
 	Customer customer1 = Customer(3,"Test #1", "City, Province", "62182238","23482347892");
 	customerRepo.appendData(customer1);
 	// Read
+	customerList = customerRepo.readAllData();
 	for (int i = 0; i < customerList.size(); i++)
 	{
 		customerList.at(i).print();
@@ -28,6 +29,7 @@ int main()
 	Customer customer2 = Customer(3, "Test #1", "City, Province", "62333333333","11111111111");
 	customerRepo.updateData(customer2);
 	// Read
+	customerList = customerRepo.readAllData();
 	for (int i = 0; i < customerList.size(); i++)
 	{
 		customerList.at(i).print();
@@ -36,9 +38,89 @@ int main()
 	// Delete
 	customerRepo.deleteData(3);
 	// Read
+	customerList = customerRepo.readAllData();
 	for (int i = 0; i < customerList.size(); i++)
 	{
 		customerList.at(i).print();
+	}
+	printf("---------------------------------\n");
+
+
+	// Unit Test Car Repository
+	CarRepository carRepo = CarRepository();
+	// Read
+	vector<Car> carList = carRepo.readAllData();
+	for (int i = 0; i < carList.size(); i++)
+	{
+		carList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Create
+	Car car1 = Car(3, "Test #1", "AA1111BB", false);
+	carRepo.appendData(car1);
+	// Read
+	carList = carRepo.readAllData();
+	for (int i = 0; i < carList.size(); i++)
+	{
+		carList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Update
+	Car car2 = Car(3, "Test #2", "CC2222DD", true);
+	carRepo.updateData(car2);
+	// Read
+	carList = carRepo.readAllData();
+	for (int i = 0; i < carList.size(); i++)
+	{
+		carList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Delete
+	carRepo.deleteData(3);
+	// Read
+	carList = carRepo.readAllData();
+	for (int i = 0; i < carList.size(); i++)
+	{
+		carList.at(i).print();
+	}
+	printf("---------------------------------\n");
+
+	// Unit Test RentForm Repository
+	RentRepository rentformRepo = RentRepository();
+	// Read
+	vector<RentForm> rentformList = rentformRepo.readAllData();
+	for (int i = 0; i < rentformList.size(); i++)
+	{
+		rentformList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Create
+	RentForm rentform1 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-7", "2021-12-10", "");
+	rentformRepo.appendData(rentform1);
+	// Read
+	rentformList = rentformRepo.readAllData();
+	for (int i = 0; i < rentformList.size(); i++)
+	{
+		rentformList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Update
+	RentForm rentform2 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-7", "2021-12-10", "2022-2-1");
+	rentformRepo.updateData(rentform2);
+	// Read
+	rentformList = rentformRepo.readAllData();
+	for (int i = 0; i < rentformList.size(); i++)
+	{
+		rentformList.at(i).print();
+	}
+	printf("---------------------------------\n");
+	// Delete
+	rentformRepo.deleteData(3);
+	// Read
+	rentformList = rentformRepo.readAllData();
+	for (int i = 0; i < rentformList.size(); i++)
+	{
+		rentformList.at(i).print();
 	}
 	printf("---------------------------------\n");
 
