@@ -1,50 +1,40 @@
-/**
- * Project Untitled
- */
+#pragma once
+#include <iostream>
+#include <vector>
+#include "../../src/repository/Repository.cpp"
+#include "../../src/model/RentForm.cpp"
+using namespace std;
 
+class RentRepository : public Repository<RentForm>
+{
+public:
+    /**
+     * constructor
+     */
+    RentRepository();
 
-#ifndef _RENTREPOSITORY_H
-#define _RENTREPOSITORY_H
+    /**
+     * @param customerId
+     */
+    RentForm searchByCustomerId(long customerId);
 
-class RentRepository {
-public: 
-    
-/**
- * @param line
- * @param Parameter1
- */
-void stringToData(string line, void Parameter1);
-    
-/**
- * @param Parameter1
- * @param Parameter2
- */
-void dataToString(void Parameter1, void Parameter2);
-    
-/**
- * @param customerId
- */
-RentForm searchByCustomerId(long customerId);
-    
-/**
- * @param carId
- */
-RentForm searchByCarId(long carId);
-    
-/**
- * @param rentalDate
- */
-RentForm searchByRentalDate(string rentalDate);
-    
-/**
- * @param expectedReturnDate
- */
-RentForm searchByExpectedReturnDate(string expectedReturnDate);
-    
-/**
- * @param returnDate
- */
-RentForm searchByReturnDate(string returnDate);
+    /**
+     * @param carId
+     */
+    RentForm searchByCarId(long carId);
+
+    /**
+     * @param rentalDate
+     */
+    RentForm searchByRentalDate(string rentalDate);
+
+    /**
+     * @param expectedReturnDate
+     */
+    RentForm searchByExpectedReturnDate(string expectedReturnDate);
+
+    /**
+     * @param returnDate
+     */
+    RentForm searchByReturnDate(string returnDate);
 };
-
-#endif //_RENTREPOSITORY_H

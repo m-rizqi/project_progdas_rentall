@@ -33,6 +33,9 @@ Car Repository<Car>::stringToData(string line)
     return Car(std::stol(arr[0]), arr[1], arr[2], rented);
 }
 
+/**
+ * @param object
+ */
 template <>
 string Repository<Car>::dataToString(Car object)
 {

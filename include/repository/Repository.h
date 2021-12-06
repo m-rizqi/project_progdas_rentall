@@ -1,10 +1,11 @@
+#pragma once
 #ifndef REPOSITORY_H
 #define REPOSITORY_H
-#pragma once
 #include <iostream>
 #include <vector>
 #include "../../include/model/Customer.h"
 #include "../../include/model/Car.h"
+#include "../../include/model/RentForm.h"
 using namespace std;
 
 /**
@@ -17,7 +18,7 @@ public:
 /**
 *  constructor 
 */
-    inline Repository(string filePath);
+    Repository(string filePath);
     /**
      * read file and then convert it into object of T
      */
@@ -70,5 +71,6 @@ string filePath;
 
 template class Repository<Customer>;
 template class Repository<Car>;
+template class Repository<RentForm>;
 
 #endif

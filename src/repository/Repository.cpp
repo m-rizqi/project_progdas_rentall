@@ -1,3 +1,4 @@
+#pragma once
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -13,7 +14,7 @@
  * constructor
  */
 template <class T>
-inline Repository<T>::Repository(string filePath)
+Repository<T>::Repository(string filePath)
 {
     this->filePath = filePath;
 }

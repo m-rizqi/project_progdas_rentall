@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "../../src/repository/Repository.cpp"
+#include "../../src/model/Customer.cpp"
 using namespace std;
 
 class CustomerRepository : public Repository<Customer>
