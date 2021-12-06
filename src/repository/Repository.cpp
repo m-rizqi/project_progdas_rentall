@@ -1,5 +1,3 @@
-#ifndef REPOSITORY_CPP
-#define REPOSITORY_CPP
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -15,7 +13,7 @@
  * constructor
  */
 template <class T>
-Repository<T>::Repository(string filePath)
+inline Repository<T>::Repository(string filePath)
 {
     this->filePath = filePath;
 }
@@ -148,5 +146,3 @@ long Repository<T>::generateId()
     T temp = listObject.at(listObject.size() - 1);
     return temp.getId() + 1;
 }
-
-#endif

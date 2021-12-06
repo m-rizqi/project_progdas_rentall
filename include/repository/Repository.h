@@ -17,7 +17,7 @@ public:
 /**
 *  constructor 
 */
-    Repository(string filePath);
+    inline Repository(string filePath);
     /**
      * read file and then convert it into object of T
      */
