@@ -108,7 +108,12 @@ string Customer::getKTPNumber() {
  * @return void
  */
 void Customer::print() {
-    printf("Customer(id=%d, name=%s, address=%s, phone=%s, KTP_number=%s)\n", this->id, this->name.c_str(), this->address.c_str(), this->phone.c_str(), this->KTP_number.c_str());
+    printf("Customer\n-------------------\n");
+    printf("Id            : %d\n",id);
+    printf("Nama          : %s\n",name.c_str());
+    printf("Alamat        : %s\n",address.c_str());
+    printf("No. Handphone : %s\n",phone.c_str());
+    printf("No. KTP / NIK : %s\n",KTP_number.c_str());
 }
 
 /**

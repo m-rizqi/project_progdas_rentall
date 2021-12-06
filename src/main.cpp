@@ -46,7 +46,7 @@ int main()
 	}
 	printf("---------------------------------\n");
 	// Search By Name
-	customerRepo.searchByName("Muhammad Rizqi").print();
+	customerRepo.searchByName("Muhammad Rizqi").at(0).print();
 	printf("---------------------------------\n");
 
 
@@ -89,7 +89,7 @@ int main()
 	}
 	printf("---------------------------------\n");
 	// Search By Name
-	carRepo.searchByName("Gatau Merek Mobil").print();
+	carRepo.searchByName("Gatau Merek Mobil").at(0).print();
 	printf("---------------------------------\n");
 
 	// Unit Test RentForm Repository

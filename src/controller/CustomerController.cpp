@@ -53,7 +53,7 @@ void CustomerController::registerCustomer()
  */
 void CustomerController::updateCustomer()
 {
-    printf("--  U D P D A T E   C U S T O M E R  --\n");
+    printf("--  U P D A T E   C U S T O M E R  --\n");
     printf("Update user berdasarkan : \n");
     printf("1. Id\n");
     printf("2. Nama\n");
@@ -204,7 +204,83 @@ void CustomerController::updateCustomer()
  */
 void CustomerController::deleteCustomer()
 {
-    printf("--  U D P D A T E   C U S T O M E R  --\n");
+    printf("--  D E L E T E   C U S T O M E R  --\n");
+    printf("Hapus user berdasarkan : \n");
+    printf("1. Id\n");
+    printf("2. Nama\n");
+    printf("Opsi yang dipilih : \n");
+    string temp;
+    int option;
+    cin >> option;
+    getline(cin, temp);
+    Customer customer;
+    switch (option)
+    {
+    case 1:
+    {
+        printf(">> Update berdasarkan Id\n");
+        printf("Masukkan Id customer : \n");
+        long id;
+        cin >> id;
+        getline(cin, temp);
+        customer = customerRepository.findData(id);
+    }
+    break;
+    case 2:
+    {
+        printf(">> Update berdasarkan nama\n");
+        printf("Masukkan nama customer : \n");
+        string _name;
+        getline(cin, _name);
+        vector<Customer> result = customerRepository.searchByName(_name);
+        if (result.size() == 0)
+        {
+            customer = result.at(0);
+        }
+        else
+        {
+            printf("!!! Terdapat beberapa customer dengan nama yang sama !!!\n");
+            for (Customer c : result)
+            {
+                c.print();
+                printf("\n");
+            }
+            printf("Pilih Id dari customer yang dimaksud!\n");
+            long id;
+            cin >> id;
+            getline(cin, temp);
+            customer = customerRepository.findData(id);
+        }
+    }
+    break;
+    default:
+        break;
+    }
+    if (customer.getId() == 0)
+    {
+        printf("Maaf!, Customer tidak ditemukan\n");
+    }else{
+        printf("--- Konfirmasi ---\n");
+        printf(">>> Data Customer\n");
+        customer.print();
+        printf("Tekan \"y\" untuk menghapus data...\n");
+        printf("Tekan \"n\" untuk batal menghapus...\n");
+        while (true)
+        {
+            char key = getch();
+            if (key == 'y')
+            {
+                customerRepository.deleteData(customer.getId());
+                printf("-- Data Customer Berhasil Dihapus --");
+                break;
+            }
+            else if (key == 'n')
+            {
+                printf("-- Data Customer Batal Dihapus --");
+                break;
+            }
+        }
+    }
 }
 
 /**
@@ -212,6 +288,7 @@ void CustomerController::deleteCustomer()
  */
 void CustomerController::displayCustomers()
 {
+
 }
 
 /**
@@ -233,4 +310,14 @@ void CustomerController::navigateNext()
  */
 void CustomerController::searchCustomer()
 {
+    printf("--  S E A R C H   C U S T O M E R  --\n");
+    printf("Masukkan nama customer : \n");
+    string name;
+    getline(cin, name);
+    vector<Customer> result = customerRepository.searchByName(name);
+    printf("Hasil pencarian : \n");
+    for(Customer c : result){
+        c.print();
+        printf("\n");
+    }
 }
