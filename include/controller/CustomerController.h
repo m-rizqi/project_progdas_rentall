@@ -47,6 +47,8 @@ public:
      * function to search one or multiple customer by condition
      */
     void searchCustomer();
+private:
+    CustomerRepository customerRepository;
 };
 
 #endif //_CONTROLLER_H
