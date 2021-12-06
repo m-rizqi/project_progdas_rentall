@@ -159,6 +159,9 @@ int main()
 	}
 	printf("---------------------------------\n");
 
+	// Unit Test Customer Controller
+	// Register new Customer
+
 	return 0;
 }
 	

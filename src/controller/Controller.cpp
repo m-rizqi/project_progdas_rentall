@@ -1,20 +1,23 @@
-/**
- * Project Untitled
- */
-
-
-#include "Controller.h"
+#pragma once
+#include <fstream>
+#include <sstream>
+#include <string>
+#include "../../include/controller/Controller.h"
 
 /**
  * Controller implementation
  */
 
+/**
+ * constructor
+ */
+Controller::Controller(){}
 
 /**
  * function to register a data such as customer and car , or add new rental form
  */
 void Controller::registerData() {
-
+    
 }
 
 /**
@@ -50,14 +53,6 @@ void Controller::navigatePrevious() {
  */
 void Controller::navigateNext() {
 
-}
-
-/**
- * function to format the data into string
- * @return string
- */
-string Controller::displayFormat() {
-    return "";
 }
 
 /**

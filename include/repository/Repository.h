@@ -9,15 +9,15 @@
 using namespace std;
 
 /**
- * Parent Class 
+ * Parent Class
  */
 template <class T>
 class Repository
 {
-public: 
-/**
-*  constructor 
-*/
+public:
+    /**
+     *  constructor
+     */
     Repository(string filePath);
     /**
      * read file and then convert it into object of T
@@ -61,12 +61,13 @@ public:
     virtual string dataToString(T object);
 
     long generateId();
-private: 
+
+private:
     /**
- * List of all customer data from database
- */
-vector<T> objectList;
-string filePath;
+     * List of all customer data from database
+     */
+    vector<T> objectList;
+    string filePath;
 };
 
 template class Repository<Customer>;
