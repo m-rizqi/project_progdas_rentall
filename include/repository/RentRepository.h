@@ -16,25 +16,25 @@ public:
     /**
      * @param customerId
      */
-    RentForm searchByCustomerId(long customerId);
+    vector<RentForm> searchByCustomerId(long customerId);
 
     /**
      * @param carId
      */
-    RentForm searchByCarId(long carId);
+    vector<RentForm> searchByCarId(long carId);
 
     /**
      * @param rentalDate
      */
-    RentForm searchByRentalDate(string rentalDate);
+    vector<RentForm> searchByRentalDate(string rentalDate);
 
     /**
      * @param expectedReturnDate
      */
-    RentForm searchByExpectedReturnDate(string expectedReturnDate);
+    vector<RentForm> searchByExpectedReturnDate(string expectedReturnDate);
 
     /**
      * @param returnDate
      */
-    RentForm searchByReturnDate(string returnDate);
+    vector<RentForm> searchByReturnDate(string returnDate);
 };

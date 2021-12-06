@@ -101,7 +101,7 @@ int main()
 	}
 	printf("---------------------------------\n");
 	// Create
-	RentForm rentform1 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-7", "2021-12-10", "");
+	RentForm rentform1 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-6", "2021-12-10", "");
 	rentformRepo.appendData(rentform1);
 	// Read
 	rentformList = rentformRepo.readAllData();
@@ -111,7 +111,7 @@ int main()
 	}
 	printf("---------------------------------\n");
 	// Update
-	RentForm rentform2 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-7", "2021-12-10", "2022-2-1");
+	RentForm rentform2 = RentForm(2, 1, 1, "Sleman, Yogyakarta", "2021-12-6", "2021-12-10", "2022-2-1");
 	rentformRepo.updateData(rentform2);
 	// Read
 	rentformList = rentformRepo.readAllData();
@@ -130,19 +130,33 @@ int main()
 	}
 	printf("---------------------------------\n");
 	// Search By Customer Id
-	rentformRepo.searchByCustomerId(2).print();
-	printf("---------------------------------\n");
+	for (RentForm rF : rentformRepo.searchByCustomerId(1)){
+		rF.print();
+	}
+		printf("---------------------------------\n");
 	// Search By Car Id
-	rentformRepo.searchByCarId(2).print();
+		for (RentForm rF : rentformRepo.searchByCarId(1))
+		{
+			rF.print();
+		}
 	printf("---------------------------------\n");
 	// Search By Rental Date
-	rentformRepo.searchByRentalDate("2021-12-6").print();
+	for (RentForm rF : rentformRepo.searchByRentalDate("2021-12-6"))
+	{
+		rF.print();
+	}
 	printf("---------------------------------\n");
 	// Search By Expected Return Date
-	rentformRepo.searchByExpectedReturnDate("2021-12-31").print();
+	for (RentForm rF : rentformRepo.searchByExpectedReturnDate("2021-12-31"))
+	{
+		rF.print();
+	}
 	printf("---------------------------------\n");
 	// Search By Return Date
-	rentformRepo.searchByReturnDate("2022-2-1").print();
+	for (RentForm rF : rentformRepo.searchByReturnDate("2022-2-1"))
+	{
+		rF.print();
+	}
 	printf("---------------------------------\n");
 
 	return 0;

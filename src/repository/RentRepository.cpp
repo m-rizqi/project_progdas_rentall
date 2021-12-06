@@ -50,81 +50,81 @@ string Repository<RentForm>::dataToString(RentForm object)
  * @param customerId
  * @return RentForm
  */
-RentForm RentRepository::searchByCustomerId(long customerId) {
-    RentForm rentForm = RentForm();
+vector<RentForm> RentRepository::searchByCustomerId(long customerId)
+{
+    vector<RentForm> resultList;
     for(RentForm rF : readAllData()){
         if(rF.getCustomerId() == customerId){
-            rentForm = rF;
-            break;
+            resultList.push_back(rF);
         }
     }
-    return rentForm;
+    return resultList;
 }
 
 /**
  * @param carId
  * @return RentForm
  */
-RentForm RentRepository::searchByCarId(long carId) {
-    RentForm rentForm = RentForm();
+vector<RentForm> RentRepository::searchByCarId(long carId)
+{
+    vector<RentForm> resultList;
     for (RentForm rF : readAllData())
     {
         if (rF.getCarId() == carId)
         {
-            rentForm = rF;
-            break;
+            resultList.push_back(rF);
         }
     }
-    return rentForm;
+    return resultList;
 }
 
 /**
  * @param rentalDate
  * @return RentForm
  */
-RentForm RentRepository::searchByRentalDate(string rentalDate) {
-    RentForm rentForm = RentForm();
+vector<RentForm> RentRepository::searchByRentalDate(string rentalDate)
+{
+    vector<RentForm> resultList;
     for (RentForm rF : readAllData())
     {
         if (rF.getRentalDate() == rentalDate)
         {
-            rentForm = rF;
-            break;
+            resultList.push_back(rF);
         }
     }
-    return rentForm;
+    return resultList;
 }
 
 /**
  * @param expectedReturnDate
  * @return RentForm
  */
-RentForm RentRepository::searchByExpectedReturnDate(string expectedReturnDate) {
-    RentForm rentForm = RentForm();
+vector<RentForm> RentRepository::searchByExpectedReturnDate(string expectedReturnDate)
+{
+    vector<RentForm> resultList;
     for (RentForm rF : readAllData())
     {
         if (rF.getExpectedReturnDate() == expectedReturnDate)
         {
-            rentForm = rF;
-            break;
+            resultList.push_back(rF);
         }
     }
-    return rentForm;
+    return resultList;
 }
 
 /**
  * @param returnDate
  * @return RentForm
  */
-RentForm RentRepository::searchByReturnDate(string returnDate) {
-    RentForm rentForm = RentForm();
+vector<RentForm> RentRepository::searchByReturnDate(string returnDate)
+{
+    vector<RentForm> resultList;
     for (RentForm rF : readAllData())
     {
         if (rF.getReturnDate() == returnDate)
         {
-            rentForm = rF;
-            break;
+            resultList.push_back(rF);
         }
     }
-    return rentForm;
+    return resultList;
 }
