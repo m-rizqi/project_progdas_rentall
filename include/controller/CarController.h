@@ -5,13 +5,58 @@
 
 #ifndef _CARCONTROLLER_H
 #define _CARCONTROLLER_H
+#include "../../include/repository/CarRepository.h"
+
 
 class CarController {
 public: 
     
-void displayFormat();
+//void displayFormat();
     
-void searchData();
+//void searchData();
+
+
+/**
+     *  constructor
+     */
+    CarController();
+    /**
+     * function to register a Car
+     */
+    void registerCar();
+
+    /**
+     * function to edit and save Car
+     */
+    void updateCar();
+
+    /**
+     * function to delete Car
+     */
+    void deleteCar();
+
+    /**
+     * function to show multiple Car
+     */
+    void displayCars(int entry);
+
+    /**
+     * function to show previous page of display Car
+     */
+    void navigatePrevious(int entry, int idx);
+
+    /**
+     * function to show next page of display Car
+     */
+    void navigateNext(int entry, int idx);
+
+    /**
+     * function to search one or multiple Car by condition
+     */
+    void searchCar();
+private:
+    CarRepository carRepository;
+
 };
 
 #endif //_CARCONTROLLER_H
