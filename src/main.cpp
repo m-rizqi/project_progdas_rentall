@@ -169,8 +169,8 @@ int main()
 	// custController.updateCustomer();
 
 	// Display Customer
-	custController.displayCustomers();
-	
+	custController.displayCustomers(3);
+
 
 	return 0;
 }

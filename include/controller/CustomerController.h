@@ -31,17 +31,17 @@ public:
     /**
      * function to show multiple customer
      */
-    void displayCustomers();
+    void displayCustomers(int entry);
 
     /**
      * function to show previous page of display customer
      */
-    void navigatePrevious();
+    void navigatePrevious(int entry, int idx);
 
     /**
      * function to show next page of display customer
      */
-    void navigateNext();
+    void navigateNext(int entry, int idx);
 
     /**
      * function to search one or multiple customer by condition

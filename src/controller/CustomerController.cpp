@@ -286,13 +286,13 @@ void CustomerController::deleteCustomer()
 /**
  * function to show multiple customer
  */
-void CustomerController::displayCustomers()
+void CustomerController::displayCustomers(int entry)
 {
     string temp;
     printf("--  D I S P L A Y   C U S T O M E R  --\n");
     printf("---------------------------------------\n");
     vector<Customer> customerList = customerRepository.readAllData();
-    int entry = customerList.size() > 3 ? 3 : customerList.size();
+    entry = customerList.size() > entry ?  entry: customerList.size();
     int idx = 0;
     for(int i = idx; i < entry; i++){
         customerList.at(i).print();
@@ -303,6 +303,7 @@ void CustomerController::displayCustomers()
     printf("1. Ubah jumlah customer per page\n");
     printf("2. previous page\n");
     printf("3. next page\n");
+    printf("4. stop display\n");
     printf("Opsi yang dipilih\n");
     int option;
     cin >> option;
@@ -310,15 +311,18 @@ void CustomerController::displayCustomers()
     switch (option)
     {
     case 1:
-        
+        printf("Customer per page : ");
+        cin>>entry;
+        getline(cin, temp);
+        system("CLS");
+        displayCustomers(entry);
         break;
     case 2:
-        /* code */
+        navigatePrevious(entry, idx);
         break;
     case 3:
-        /* code */
+        navigateNext(entry, idx);
         break;
-    
     default:
         break;
     }
@@ -327,14 +331,21 @@ void CustomerController::displayCustomers()
 /**
  * function to show previous page of display customer
  */
-void CustomerController::navigatePrevious()
+void CustomerController::navigatePrevious(int entry, int idx)
 {
+    bool stop = false;
+    while(!stop){
+        if (idx != 0)
+        {
+            idx -= entry;
+        }
+    }
 }
 
 /**
  * function to show next page of display customer
  */
-void CustomerController::navigateNext()
+void CustomerController::navigateNext(int entry, int idx)
 {
 }
 
