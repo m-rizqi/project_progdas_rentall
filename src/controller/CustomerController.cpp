@@ -288,7 +288,40 @@ void CustomerController::deleteCustomer()
  */
 void CustomerController::displayCustomers()
 {
-
+    string temp;
+    printf("--  D I S P L A Y   C U S T O M E R  --\n");
+    printf("---------------------------------------\n");
+    vector<Customer> customerList = customerRepository.readAllData();
+    int entry = customerList.size() > 3 ? 3 : customerList.size();
+    int idx = 0;
+    for(int i = idx; i < entry; i++){
+        customerList.at(i).print();
+    }
+    printf("---------------------------------------\n");
+    printf("%d customers/page              page : 1\n", entry);
+    printf("\nOpsi lainnya : \n");
+    printf("1. Ubah jumlah customer per page\n");
+    printf("2. previous page\n");
+    printf("3. next page\n");
+    printf("Opsi yang dipilih\n");
+    int option;
+    cin >> option;
+    getline(cin, temp);
+    switch (option)
+    {
+    case 1:
+        
+        break;
+    case 2:
+        /* code */
+        break;
+    case 3:
+        /* code */
+        break;
+    
+    default:
+        break;
+    }
 }
 
 /**

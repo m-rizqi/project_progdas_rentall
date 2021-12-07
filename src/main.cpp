@@ -166,7 +166,11 @@ int main()
 	// custController.registerCustomer();
 
 	// Update Customer
-	custController.updateCustomer();
+	// custController.updateCustomer();
+
+	// Display Customer
+	custController.displayCustomers();
+	
 
 	return 0;
 }
