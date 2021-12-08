@@ -352,7 +352,7 @@ void CustomerController::navigatePrevious(int entry, int idx, vector<Customer> c
             printf("\nAnda berada di page pertama. Pilih opsi lainnya !!\n\n");
         }
         printf("---------------------------------------\n");
-        printf("%d customers/page              page : %d\n", entry, ((idx % entry) + 1));
+        printf("%d customers/page              page : %d\n", entry, ((idx / entry) + 1));
         printf("\nOpsi lainnya : \n");
         printf("1. Ubah jumlah customer per page\n");
         printf("2. previous page\n");
@@ -393,7 +393,7 @@ void CustomerController::navigateNext(int entry, int idx, vector<Customer> custo
     bool stop = false;
     while (!stop)
     {
-        if ((idx + entry) <= customerList.size())
+        if ((idx + entry) < customerList.size())
         {
             idx += entry;
             for (int i = idx; i < entry+idx; i++)
@@ -410,7 +410,7 @@ void CustomerController::navigateNext(int entry, int idx, vector<Customer> custo
             printf("\nAnda berada di page terakhir. Pilih opsi lainnya !!\n\n");
         }
         printf("---------------------------------------\n");
-        printf("%d customers/page              page : %d\n", entry, ((idx % entry) + 1));
+        printf("%d customers/page              page : %d\n", entry, ((idx / entry) + 1));
         printf("\nOpsi lainnya : \n");
         printf("1. Ubah jumlah customer per page\n");
         printf("2. previous page\n");
