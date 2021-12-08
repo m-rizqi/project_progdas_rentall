@@ -288,6 +288,7 @@ void CustomerController::deleteCustomer()
  */
 void CustomerController::displayCustomers(int entry)
 {
+    system("CLS");
     string temp;
     printf("--  D I S P L A Y   C U S T O M E R  --\n");
     printf("---------------------------------------\n");
@@ -314,14 +315,13 @@ void CustomerController::displayCustomers(int entry)
         printf("Customer per page : ");
         cin>>entry;
         getline(cin, temp);
-        system("CLS");
         displayCustomers(entry);
         break;
     case 2:
-        navigatePrevious(entry, idx);
+        navigatePrevious(entry, idx, customerList);
         break;
     case 3:
-        navigateNext(entry, idx);
+        navigateNext(entry, idx, customerList);
         break;
     default:
         break;
@@ -331,13 +331,54 @@ void CustomerController::displayCustomers(int entry)
 /**
  * function to show previous page of display customer
  */
-void CustomerController::navigatePrevious(int entry, int idx)
+void CustomerController::navigatePrevious(int entry, int idx, vector<Customer> customerList)
 {
+    system("CLS");
+    string temp;
     bool stop = false;
     while(!stop){
-        if (idx != 0)
+        if ((idx - entry) >= 0)
         {
             idx -= entry;
+            for (int i = idx; i < idx+entry; i++)
+            {
+                customerList.at(i).print();
+            }
+        }else{
+            for (int i = 0; i < (entry > customerList.size() ? customerList.size() : entry); i++)
+            {
+                customerList.at(i).print();
+            }
+            printf("\nAnda berada di page pertama. Pilih opsi lainnya !!\n\n");
+        }
+        printf("---------------------------------------\n");
+        printf("%d customers/page              page : %d\n", entry, ((idx % entry) + 1));
+        printf("\nOpsi lainnya : \n");
+        printf("1. Ubah jumlah customer per page\n");
+        printf("2. previous page\n");
+        printf("3. next page\n");
+        printf("4. stop display\n");
+        printf("Opsi yang dipilih\n");
+        int option;
+        cin >> option;
+        getline(cin, temp);
+        switch (option)
+        {
+        case 1:
+            printf("Customer per page : ");
+            cin >> entry;
+            getline(cin, temp);
+            displayCustomers(entry);
+            break;
+        case 2:
+            navigatePrevious(entry, idx, customerList);
+            break;
+        case 3:
+            navigateNext(entry, idx, customerList);
+            break;
+        default:
+            stop = true;
+            break;
         }
     }
 }
@@ -345,8 +386,59 @@ void CustomerController::navigatePrevious(int entry, int idx)
 /**
  * function to show next page of display customer
  */
-void CustomerController::navigateNext(int entry, int idx)
+void CustomerController::navigateNext(int entry, int idx, vector<Customer> customerList)
 {
+    system("CLS");
+    string temp;
+    bool stop = false;
+    while (!stop)
+    {
+        if ((idx + entry) <= customerList.size())
+        {
+            idx += entry;
+            for (int i = idx; i < entry+idx; i++)
+            {
+                customerList.at(i).print();
+            }
+        }
+        else
+        {
+            for (int i = idx; i < customerList.size(); i++)
+            {
+                customerList.at(i).print();
+            }
+            printf("\nAnda berada di page terakhir. Pilih opsi lainnya !!\n\n");
+        }
+        printf("---------------------------------------\n");
+        printf("%d customers/page              page : %d\n", entry, ((idx % entry) + 1));
+        printf("\nOpsi lainnya : \n");
+        printf("1. Ubah jumlah customer per page\n");
+        printf("2. previous page\n");
+        printf("3. next page\n");
+        printf("4. stop display\n");
+        printf("Opsi yang dipilih\n");
+        int option;
+        cin >> option;
+        getline(cin, temp);
+        switch (option)
+        {
+        case 1:
+            printf("Customer per page : ");
+            cin >> entry;
+            getline(cin, temp);
+            displayCustomers(entry);
+            break;
+        case 2:
+            navigatePrevious(entry, idx, customerList);
+            break;
+        case 3:
+            navigateNext(entry, idx, customerList);
+            break;
+        default:
+            stop = true;
+            break;
+        }
+    }
 }
 
 /**

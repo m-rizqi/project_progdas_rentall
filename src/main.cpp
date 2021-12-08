@@ -5,9 +5,27 @@
 #include "../src/controller/CustomerController.cpp"
 using namespace std;
 
+void menu(){
+	CustomerController custController = CustomerController();
+	printf("Menu...");
+	int opsi;
+	cin>>opsi;
+	switch (opsi)
+	{
+	case 1:
+		printf("akdlkasd");
+		custController.registerCustomer();
+		break;
+	
+	default:
+		break;
+	}
+}
+
 int main()
 {
 	// Unit Test Customer Repository
+	// menu();
 	CustomerRepository customerRepo = CustomerRepository();
 	// Read
 	vector<Customer> customerList = customerRepo.readAllData();

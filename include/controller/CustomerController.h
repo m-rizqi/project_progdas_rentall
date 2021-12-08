@@ -36,12 +36,12 @@ public:
     /**
      * function to show previous page of display customer
      */
-    void navigatePrevious(int entry, int idx);
+    void navigatePrevious(int entry, int idx, vector<Customer> customerList);
 
     /**
      * function to show next page of display customer
      */
-    void navigateNext(int entry, int idx);
+    void navigateNext(int entry, int idx, vector<Customer> customerList);
 
     /**
      * function to search one or multiple customer by condition
