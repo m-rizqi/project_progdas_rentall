@@ -60,16 +60,16 @@ void CarController::updateCar(){
     //deklarasi di sini
     string temp;        //temp buat apa si?
 
-    Car oldCar;         // ini apaaaa bingunggg
+    Car oldCar;         //??
 
     cout<< "-- U P D A T E  C A R --\n";
-    cout<< " Update akan berjalan berdasarkan nomor polisi mobil\n";
-    cout<< "Silahkan masukkan nomor polisi dari mobil : \n";
-    long nomor_polisi;
-    cin>> nomor_polisi;
-    cin>> temp;
+    cout<< "Update akan berjalan berdasarkan Id\n";
+    cout<< "Silahkan masukkan Id : \n";
+    long id;
+    cin>> id;
+    getline(cin, temp);
     
-    oldCar = carRepository.findData(nomor_polisi);  // ini find data apa?
+    oldCar = carRepository.findData(id);  // ini find data apa?
 
     if (oldCar.getId() == 0)
     {
@@ -78,7 +78,6 @@ void CarController::updateCar(){
     else
     {
         string nama_mobil;
-        long nomor_polisi;
 
         cout<< "Data dari mobil lama\n";
         oldCar.print();
@@ -104,16 +103,18 @@ void CarController::updateCar(){
         char opsi = getch();
         if (opsi == 'y'){
             cout<< "Nomor polisi baru: ";
+            long nomor_polisi;
             cin>> nomor_polisi;
             break;
         }
         else if (opsi == 'n'){
-            nomor_polisi = oldCar.getPoliceNumber(); // ini get apaa
+            long nomor_polisi;
+            nomor_polisi = oldCar.getPoliceNumber(); // ini get apa
             break;
         }
     }
 
-    Car newCar = Car(oldCar.getId() // ini fungsinya apa yg dipanggil gapaham
+    Car newCar = Car(oldCar.getId() // ini fungsinya apa
     cout<< "--- Konfirmasi ---\n";
     cout<< "Silahkan dicek kembali datanya\n";
     cout<< "Data mobil lama\n";
@@ -142,13 +143,13 @@ void CarController::updateCar(){
 
 }
 
-/* function to delete a customer
+/* function to delete a Car
  */
 void CarController::deleteCar(){
 
     string temp;
 
-    Car car;        // ini apaaaaa
+    Car car;        // ini?
 
     cout<< "-- D E L E T E  C A R --\n";
     cout<< "Mobil akan dihapus berdasarkan nomor polisi\n";
@@ -184,5 +185,25 @@ void CarController::deleteCar(){
             }
         }
     }
+
+}// close program
+
+/*
+ *function to show multiple cars
+ */
+void CarController::displayCars(int entry) // belum selesai gaess
+{
+    system("CLS");
+    string temp;
+    
+    cout<<"-- D I S P L A Y  C A R S --\n";
+    cout<<"----------------------------\n";
+    vector<Cars> carList = carRepository.readAllData();
+    entry = CarList.size() > entry ?  entry: CarList.size();
+    int idx = 0;
+    for(int i = idx; i < entry; i++){
+     CarList.at(i).print();
+    }
+
 
 }// close program
