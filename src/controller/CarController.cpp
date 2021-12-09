@@ -1,8 +1,3 @@
-/**
- * Project Untitled
- */
-
-
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -58,9 +53,8 @@ void CarController::registerCar(){
 void CarController::updateCar(){
 
     //deklarasi di sini
-    string temp;        //temp buat apa si?
-
-    Car oldCar;         //??
+    string temp;       
+    Car oldCar;
 
     cout<< "-- U P D A T E  C A R --\n";
     cout<< "Update akan berjalan berdasarkan Id\n";
@@ -70,15 +64,13 @@ void CarController::updateCar(){
     getline(cin, temp);
     
     oldCar = carRepository.findData(id);  // ini find data apa?
-
+    string nama_mobil;
     if (oldCar.getId() == 0)
     {
-        cout<< "Maaf, nomor polisi tidak ditemukan\n";
+        cout<< "Maaf, mobil tidak ditemukan\n";
     }
     else
     {
-        string nama_mobil;
-
         cout<< "Data dari mobil lama\n";
         oldCar.print();
         
@@ -97,24 +89,22 @@ void CarController::updateCar(){
             }
         }
     } // dari else
-    
+    string nomor_polisi;
     cout<< "Apakah nomor polisi dari mobil? (y untuk yes, n untuk no) : \n";
     while(true){
         char opsi = getch();
         if (opsi == 'y'){
             cout<< "Nomor polisi baru: ";
-            long nomor_polisi;
             cin>> nomor_polisi;
             break;
         }
         else if (opsi == 'n'){
-            long nomor_polisi;
             nomor_polisi = oldCar.getPoliceNumber(); // ini get apa
             break;
         }
     }
 
-    Car newCar = Car(oldCar.getId() // ini fungsinya apa
+    Car newCar = Car(oldCar.getId(),nama_mobil,nomor_polisi, oldCar.isRented());
     cout<< "--- Konfirmasi ---\n";
     cout<< "Silahkan dicek kembali datanya\n";
     cout<< "Data mobil lama\n";
@@ -199,11 +189,11 @@ void CarController::displayCars(int entry) // belum selesai gaess
     
     cout<<"-- D I S P L A Y  C A R S --\n";
     cout<<"----------------------------\n";
-    vector<Cars> carList = carRepository.readAllData();
-    entry = CarList.size() > entry ?  entry: CarList.size();
+    vector<Car> carList = carRepository.readAllData();
+    entry = carList.size() > entry ?  entry: carList.size();
     int idx = 0;
     for(int i = idx; i < entry; i++){
-     CarList.at(i).print();
+    carList.at(i).print();
     }
     cout<<"===================================\n";
     cout<< "%d car/page                page: 1\n", entry;
@@ -212,7 +202,7 @@ void CarController::displayCars(int entry) // belum selesai gaess
     cout<< "2. next page\n";
     cout<< "3. stop display\n";
     
-    cout<< "Silahkan pilih opsi: ";     //ini perlu dicek sih
+    cout<< "Silahkan pilih opsi: ";     
     int option;
     cin>> option;
     getline(cin,temp);
@@ -232,13 +222,122 @@ void CarController::displayCars(int entry) // belum selesai gaess
 
 }// close program
 
-/** 
- * function to show the previous page of display cars
+/**
+ * function to show previous page of display car
  */
-        //belum selesai juga gaess maapp
 void CarController::navigatePrevious(int entry, int idx, vector<Car> carList)
 {
     system("CLS");
     string temp;
     bool stop = false;
+    while (!stop)
+    {
+        if ((idx - entry) >= 0)
+        {
+            idx -= entry;
+            for (int i = idx; i < idx + entry; i++)
+            {
+                carList.at(i).print();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < (entry > carList.size() ? carList.size() : entry); i++)
+            {
+                carList.at(i).print();
+            }
+            printf("\nAnda berada di page pertama. Pilih opsi lainnya !!\n\n");
+        }
+        printf("---------------------------------------\n");
+        printf("%d cars/page                 page : %d\n", entry, ((idx / entry) + 1));
+        printf("\nOpsi lainnya : \n");
+        printf("1. previous page\n");
+        printf("2. next page\n");
+        printf("3. stop display\n");
+        printf("Opsi yang dipilih\n");
+        int option;
+        cin >> option;
+        getline(cin, temp);
+        switch (option)
+        {
+        case 1:
+            navigatePrevious(entry, idx, carList);
+            break;
+        case 2:
+            navigateNext(entry, idx, carList);
+            break;
+        default:
+            stop = true;
+            break;
+        }
+    }
+}
+
+/**
+ * function to show next page of display car
+ */
+void CarController::navigateNext(int entry, int idx, vector<Car> carList)
+{
+    system("CLS");
+    string temp;
+    bool stop = false;
+    while (!stop)
+    {
+        if ((idx + entry) < carList.size())
+        {
+            idx += entry;
+            for (int i = idx; i < entry + idx; i++)
+            {
+                carList.at(i).print();
+            }
+        }
+        else
+        {
+            for (int i = idx; i < carList.size(); i++)
+            {
+                carList.at(i).print();
+            }
+            printf("\nAnda berada di page terakhir. Pilih opsi lainnya !!\n\n");
+        }
+        printf("---------------------------------------\n");
+        printf("%d customers/page              page : %d\n", entry, ((idx / entry) + 1));
+        printf("\nOpsi lainnya : \n");
+        printf("1. previous page\n");
+        printf("2. next page\n");
+        printf("3. stop display\n");
+        printf("Opsi yang dipilih\n");
+        int option;
+        cin >> option;
+        getline(cin, temp);
+        switch (option)
+        {
+        case 1:
+            navigatePrevious(entry, idx, carList);
+            break;
+        case 2:
+            navigateNext(entry, idx, carList);
+            break;
+        default:
+            stop = true;
+            break;
+        }
+    }
+}
+
+/**
+ * function to search one or multiple car by condition
+ */
+void CarController::searchCar()
+{
+    printf("--  S E A R C H   C A R  --\n");
+    printf("Masukkan nama mobil : \n");
+    string name;
+    getline(cin, name);
+    vector<Car> result = carRepository.searchByName(name);
+    printf("Hasil pencarian : \n");
+    for (Car c : result)
+    {
+        c.print();
+        printf("\n");
+    }
 }
