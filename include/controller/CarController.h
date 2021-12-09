@@ -5,7 +5,7 @@
 
 #ifndef _CARCONTROLLER_H
 #define _CARCONTROLLER_H
-#include "../../include/repository/CarRepository.h"
+#include "../../src/repository/CarRepository.cpp"
 
 
 class CarController {
@@ -43,12 +43,12 @@ public:
     /**
      * function to show previous page of display Car
      */
-    void navigatePrevious(int entry, int idx);
+    void navigatePrevious(int entry, int idx, vector<Car> carList);
 
     /**
      * function to show next page of display Car
      */
-    void navigateNext(int entry, int idx);
+    void navigateNext(int entry, int idx, vector<Car> carList);
 
     /**
      * function to search one or multiple Car by condition

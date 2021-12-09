@@ -3,7 +3,7 @@
 #define _CUSTOMER_CONTROLLER_H
 #include <iostream>
 #include <vector>
-#include "../../include/repository/CustomerRepository.h"
+#include "../../src/repository/CustomerRepository.cpp"
 using namespace std;
 
 class CustomerController
