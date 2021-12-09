@@ -1,10 +1,12 @@
-#include "../../include/repository/RentRepository.h"
 
 #ifndef _RENTFORMCONTROLLER_H
 #define _RENTFORMCONTROLLER_H
+#include "../../src/repository/RentRepository.cpp"
 
 class RentFormController {
 public: 
+
+RentFormController();
 
 void rentCar();
     
