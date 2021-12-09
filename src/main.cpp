@@ -12,7 +12,7 @@ void menu()
 	bool stop = false;
 	while (!stop)
 	{
-		printf("S E W A I N : Car Rent Management Program\n");
+		printf("S E W A . I N : Car Rent Management Program\n");
 		printf("Menu : \n");
 		printf("-----------------------\n");
 		printf("1. Register Customer \n");
