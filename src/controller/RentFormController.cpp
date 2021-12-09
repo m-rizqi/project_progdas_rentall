@@ -36,14 +36,16 @@ void RentFormController::rentCar(){
 }
 
 void RentFormController::returnCar() {
+    string temp;
     long custId;
     RentForm oldForm;
-    cout << "Formulin Pengembalian SEWA.in";
+    cout << "Formulir Pengembalian SEWA.in";
     cout << "=============================";
     cout << "Masukkan Customer Id Anda \t : ";
     cin >> custId;
-    vector<RentForm> result = rentRepository.searchByCustomerId (custId);
-    if (result.size()==0){
+    getline(cin, temp);
+    vector<RentForm> result = rentRepository.searchByCustomerId(custId);
+    if (result.size()>0){
         oldForm = result.at(0);
         long customerId, carId;
         string destination, expRentDate, expreturn, retDate;
@@ -52,6 +54,7 @@ void RentFormController::returnCar() {
 
         cout << "Masukkan Tanggal Pengembalian";
         cin >> retDate;
+        getline(cin, temp);
         customerId = oldForm.getCustomerId();
         carId = oldForm.getCarId();
         destination = oldForm.getDestination();
@@ -60,10 +63,10 @@ void RentFormController::returnCar() {
 
         RentForm newForm = RentForm (0, custId, carId, destination, expRentDate, expreturn, retDate);
 
-        cout << "Konfirumasi Pengembalian Mobil Anda";
+        cout << "Konfirmasi Pengembalian Mobil Anda";
         newForm.print();
         cout << "Apakah Anda Yakin Akan Mengembalikan Mobil? (Tekan 'y' untuk ya, 'n' untuk tidak) ";
-         while (true)
+        while (true)
         {
             char key = getch();
             if (key =='y')
