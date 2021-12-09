@@ -4,7 +4,30 @@
 #include "../src/controller/RentFormController.cpp"
 using namespace std;
 
-void menu()
+void menu(){
+	printf("S E W A . I N : Car Rent Management Program\n");
+	printf("Menu : \n");
+	printf("-----------------------\n");
+	printf("1. Register Customer \n");
+	printf("2. Update Customer \n");
+	printf("3. Hapus Customer \n");
+	printf("4. Lihat Customer \n");
+	printf("5. Cari Customer \n");
+	printf("-----------------------\n");
+	printf("6. Register Mobil \n");
+	printf("7. Update Mobil \n");
+	printf("8. Hapus Mobil \n");
+	printf("9. Lihat Mobil \n");
+	printf("10. Cari Mobil \n");
+	printf("-----------------------\n");
+	printf("11. Sewa Mobil\n");
+	printf("12. Pengembalian Mobil\n");
+	printf("-----------------------\n");
+	printf("13. Keluar\n");
+	printf("\nMenu yang dipilih : ");
+}
+
+void loop()
 {
 	CustomerController custController = CustomerController();
 	CarController carController = CarController();
@@ -12,26 +35,7 @@ void menu()
 	bool stop = false;
 	while (!stop)
 	{
-		printf("S E W A . I N : Car Rent Management Program\n");
-		printf("Menu : \n");
-		printf("-----------------------\n");
-		printf("1. Register Customer \n");
-		printf("2. Update Customer \n");
-		printf("3. Hapus Customer \n");
-		printf("4. Lihat Customer \n");
-		printf("5. Cari Customer \n");
-		printf("-----------------------\n");
-		printf("6. Register Mobil \n");
-		printf("7. Update Mobil \n");
-		printf("8. Hapus Mobil \n");
-		printf("9. Lihat Mobil \n");
-		printf("10. Cari Mobil \n");
-		printf("-----------------------\n");
-		printf("11. Sewa Mobil\n");
-		printf("12. Pengembalian Mobil\n");
-		printf("-----------------------\n");
-		printf("13. Keluar\n");
-		printf("\nMenu yang dipilih : ");
+		menu();
 		string temp;
 		getline(cin, temp);
 		int option = stoi(temp);
@@ -77,11 +81,12 @@ void menu()
 			stop = true;
 			break;
 		}
+
 	}
 };
 
 int main()
 {
-	menu();
+	loop();
 	return 0;
 }
