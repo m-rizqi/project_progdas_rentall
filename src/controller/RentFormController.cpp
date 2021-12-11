@@ -27,6 +27,7 @@ void RentFormController::rentCar(){
         cin >> expRentDate;
         cout << "Estimasi Tanggal Pengembalian (dd-mm-yy) : ";
         cin >> expreturn;
+        cout << endl << endl;
 
         RentForm rentForm = RentForm (0, customerId, carId, destination, expRentDate, expreturn,"");
         rentRepository. appendData (rentForm);
@@ -49,20 +50,22 @@ void RentFormController::returnCar() {
     }
     else {
         oldForm = result.at(0);
-        long customerId, carId;
+        long customerId, carId, id;
         string destination, expRentDate, expreturn, retDate;
         cout << "Data Anda \n";
         oldForm.print();
 
         cout << "Masukkan Tanggal Pengembalian (dd-mm-yy) : ";
         cin >> retDate;
+        cout << endl << endl;
         customerId = oldForm.getCustomerId();
         carId = oldForm.getCarId();
         destination = oldForm.getDestination();
         expRentDate = oldForm.getRentalDate();
         expreturn = oldForm.getExpectedReturnDate();
+        id = oldForm.getId();
 
-        RentForm newForm = RentForm (0, custId, carId, destination, expRentDate, expreturn, retDate);
+        RentForm newForm = RentForm (id, custId, carId, destination, expRentDate, expreturn, retDate);
 
         cout << "Konfirumasi Pengembalian Mobil Anda\n";
         newForm.print();
